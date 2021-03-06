@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const Register = () => {
   const [username, setUsername] = useState("");
+  const [fio, setFio] = useState("");
   const [password, setPassword] = useState("");
 
   const register = () => {
@@ -11,11 +12,12 @@ const Register = () => {
         "http://localhost:5000/register",
         {
           username,
+          fio,
           password,
         },
         { withCredentials: true }
       )
-      .then((res) => (window.location.href = "/login"));
+      .then((res) => (window.location.href = "/"));
   };
   return (
     <div id="register">
@@ -24,6 +26,11 @@ const Register = () => {
         type="text"
         placeholder="username"
         onChange={(e) => setUsername(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="fio"
+        onChange={(e) => setFio(e.target.value)}
       />
       <input
         type="text"

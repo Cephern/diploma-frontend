@@ -2,29 +2,54 @@ import Login from "./comps/Login";
 import Profile from "./comps/Profile";
 import Register from "./comps/Register";
 import Doctors from "./comps/Doctors";
-import UserContextProvider from "./context/userContext";
 import DoctorsContextProvider from "./context/doctorsContext";
 import "./index.css";
 import Home from "./comps/Home";
 import About from "./comps/About";
 import ReviewsContextProvider from "./context/reviewsContext";
+import { userContext } from "./context/userContext";
+import { useContext } from "react";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
+  const user = useContext(userContext);
+  console.log(user);
+
   return (
     <div className="App">
-      <UserContextProvider>
-        <Login />
-        <Register />
-        <Profile />
+      <BrowserRouter>
+        <Switch>
+          {user ? (
+            <>
+              <DoctorsContextProvider>
+                <Route exact path="/" component={Home} />
+                <Route path="/doctors">
+                  <Doctors />
+                </Route>
+                <Route path="/about">
+                  <ReviewsContextProvider>
+                    <About />
+                  </ReviewsContextProvider>
+                </Route>
+              </DoctorsContextProvider>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+            </>
+          ) : (
+            <>
+              <Route exact path="/">
+                <Login />
+              </Route>
 
-        <DoctorsContextProvider>
-          <Home />
-          <Doctors />
-          <ReviewsContextProvider>
-            <About />
-          </ReviewsContextProvider>
-        </DoctorsContextProvider>
-      </UserContextProvider>
+              <Route path="/register">
+                <Register />
+              </Route>
+            </>
+          )}
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

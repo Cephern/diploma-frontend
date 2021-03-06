@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { doctorsContext } from "../context/doctorsContext";
+import { userContext } from "../context/userContext";
 
 import Question from "./Question";
 import DoctorsInput from "./DoctorsInput";
@@ -7,6 +8,7 @@ import DoctorsInput from "./DoctorsInput";
 import axios from "axios";
 
 const Home = () => {
+  const user = useContext(userContext);
   const doctors = useContext(doctorsContext);
 
   const [questions, setQuestions] = useState([
@@ -105,7 +107,7 @@ const Home = () => {
   const [selectedDoctor, setSelectedDoctor] = useState("");
 
   const [answers, setAnswers] = useState([]);
-  const [fio, setFio] = useState("");
+  const [fio, setFio] = useState(user.fio);
 
   const handleAnswers = async (answer) => {
     if (answers.find((ans) => answer.name === ans.name)) {
