@@ -11,6 +11,7 @@ import { userContext } from "./context/userContext";
 import { useContext } from "react";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Nav from "./comps/Nav";
 
 function App() {
   const user = useContext(userContext);
@@ -23,6 +24,7 @@ function App() {
           {user ? (
             <>
               <DoctorsContextProvider>
+                <Nav />
                 <Route exact path="/" component={Home} />
                 <Route path="/doctors">
                   <Doctors />
