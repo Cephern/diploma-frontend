@@ -121,6 +121,7 @@ const Home = () => {
     } else {
       setAnswers([...answers, answer]);
     }
+    console.log(answers);
   };
 
   const handleChange = (e) => {
