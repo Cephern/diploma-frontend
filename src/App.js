@@ -20,33 +20,26 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
-          {user ? (
-            user.isDoctor ? (
-              <Route to="/">
-                <Profile />
-              </Route>
-            ) : (
-              <>
-                <DoctorsContextProvider>
-                  <Nav />
-                  <Route exact path="/" component={Home} />
-                  <Route path="/doctors">
-                    <Doctors />
-                  </Route>
-                  <Route path="/about">
-                    <ReviewsContextProvider>
-                      <About />
-                    </ReviewsContextProvider>
-                  </Route>
-                </DoctorsContextProvider>
-                <Route path="*">
-                  <NotFound />
-                </Route>
-              </>
-            )
+        {user ? (
+          user.isDoctor ? (
+            <Route path="/">
+              <Profile />
+            </Route>
           ) : (
             <>
+              <Switch>
+                <DoctorsContextProvider>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/doctors" component={Doctors} />
+                  <Route path="/about" component={About} />
+                  <Route component={NotFound} />
+                </DoctorsContextProvider>
+              </Switch>
+            </>
+          )
+        ) : (
+          <>
+            <Switch>
               <Route exact path="/">
                 <Login />
               </Route>
@@ -54,9 +47,9 @@ function App() {
               <Route path="/register">
                 <Register />
               </Route>
-            </>
-          )}
-        </Switch>
+            </Switch>
+          </>
+        )}
       </BrowserRouter>
     </div>
   );

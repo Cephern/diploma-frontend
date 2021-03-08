@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 
 import Review from "./Review";
+import Nav from "./Nav";
 
 import { reviewsContext } from "../context/reviewsContext";
 
@@ -18,6 +19,7 @@ const About = () => {
 
   return (
     <div id="about">
+      <Nav />
       <main>
         <h2>О Сервисе</h2>
 

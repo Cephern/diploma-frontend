@@ -4,6 +4,7 @@ import { userContext } from "../context/userContext";
 
 import Question from "./Question";
 import DoctorsInput from "./DoctorsInput";
+import Nav from "./Nav";
 
 import axios from "axios";
 
@@ -152,6 +153,7 @@ const Home = () => {
 
   return (
     <div id="home">
+      <Nav />
       <form onSubmit={handleSubmit}>
         <div className="upper">
           <div className="fio-wrap">
