@@ -6,7 +6,6 @@ import ProfileInner from "./ProfileInner";
 const Profile = () => {
   const user = useContext(userContext);
   const [forms, setForms] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
   const [decrypt, setDecrypt] = useState({
     character: {
       body: "Опишите характер боли",
@@ -82,13 +81,15 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/form", { withCredentials: true })
+      .get("https://doc-backend.herokuapp.com/form", { withCredentials: true })
       .then((res) => setForms(res.data));
   }, []);
 
   const logout = () => {
     axios
-      .get("http://localhost:5000/logout", { withCredentials: true })
+      .get("https://doc-backend.herokuapp.com/logout", {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data === "success") {
           window.location.href = "/";

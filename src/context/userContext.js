@@ -8,7 +8,7 @@ const UserContextProvider = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/user", { withCredentials: true })
+      .get("https://doc-backend.herokuapp.com/user", { withCredentials: true })
       .then((res) => setUser(res.data));
   }, []);
 

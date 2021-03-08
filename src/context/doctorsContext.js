@@ -8,7 +8,7 @@ const DoctorsContextProvider = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/doctors")
+      .get("https://doc-backend.herokuapp.com/doctors")
       .then((res) => setDoctors(res.data));
   }, []);
 

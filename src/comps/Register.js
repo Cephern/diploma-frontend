@@ -17,7 +17,7 @@ const Register = () => {
 
     axios
       .post(
-        "http://localhost:5000/register",
+        "https://doc-backend.herokuapp.com/register",
         {
           username,
           fio,

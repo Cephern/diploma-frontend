@@ -8,7 +8,7 @@ const ReviewsContextProvider = (props) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/reviews")
+      .get("https://doc-backend.herokuapp.com/reviews")
       .then((res) => setReviews(res.data));
   }, []);
 

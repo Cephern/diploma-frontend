@@ -141,7 +141,7 @@ const Home = () => {
       return;
     } else {
       axios
-        .post("http://localhost:5000/form", {
+        .post("https://doc-backend.herokuapp.com/form", {
           answers,
           selectedDoctor,
           fio,

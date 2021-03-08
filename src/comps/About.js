@@ -13,7 +13,7 @@ const About = () => {
 
   const handleSubmit = (e) => {
     axios
-      .post("http://localhost:5000/reviews", { fio, review })
+      .post("https://doc-backend.herokuapp.com/reviews", { fio, review })
       .catch((err) => console.log(err));
   };
 

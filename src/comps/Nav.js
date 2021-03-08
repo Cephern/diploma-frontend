@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   const logout = () => {
     axios
-      .get("http://localhost:5000/logout", { withCredentials: true })
+      .get("https://doc-backend.herokuapp.com/logout", {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data === "success") {
           window.location.href = "/";

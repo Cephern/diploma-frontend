@@ -12,7 +12,6 @@ import { userContext } from "./context/userContext";
 import { useContext } from "react";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Nav from "./comps/Nav";
 
 function App() {
   const user = useContext(userContext);
@@ -29,10 +28,12 @@ function App() {
             <>
               <Switch>
                 <DoctorsContextProvider>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/doctors" component={Doctors} />
-                  <Route path="/about" component={About} />
-                  <Route component={NotFound} />
+                  <ReviewsContextProvider>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/doctors" component={Doctors} />
+                    <Route path="/about" component={About} />
+                    <Route component={NotFound} />
+                  </ReviewsContextProvider>
                 </DoctorsContextProvider>
               </Switch>
             </>
