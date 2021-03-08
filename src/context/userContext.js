@@ -11,7 +11,7 @@ const UserContextProvider = (props) => {
     axios
       .get("https://doc-backend.herokuapp.com/user", { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         setUser(res.data);
       });
   }, []);
