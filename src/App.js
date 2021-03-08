@@ -15,6 +15,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   const user = useContext(userContext);
+  console.log(user);
 
   return (
     <div className="App">
