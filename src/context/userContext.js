@@ -5,11 +5,15 @@ export const userContext = createContext();
 
 const UserContextProvider = (props) => {
   const [user, setUser] = useState();
+  console.log(user);
 
   useEffect(() => {
     axios
       .get("https://doc-backend.herokuapp.com/user", { withCredentials: true })
-      .then((res) => setUser(res.data));
+      .then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+      });
   }, []);
 
   return (
